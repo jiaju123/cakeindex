@@ -19,7 +19,7 @@ export default new Router({
             component: Index,
           },
           {
-              path:'/incate:id',
+              path:'/incate',
               component: Incate,
           },
           {
