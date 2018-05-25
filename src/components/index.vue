@@ -45,7 +45,7 @@
                     </div>
                     <div class="cmid">
                         <div class="cml">
-                            <img src="" alt="">
+                            <img src="../assets/img1/shw (9).png" alt="">
                         </div>
                         <div class="cmr">
                             <div class="cmrt">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="cml">
-                            <img src="" alt="">
+                            <img src="../assets/img1/shw (14).png" alt="">
                         </div>
                     </div>
                 </li>
@@ -112,14 +112,15 @@
 
         </section>
         <section class="gg">
+            <div class="bb"></div>
               <div>
-                  <img src="" alt="">
+                  <img src="../assets/img1/shw (10).png" alt="">
               </div>
               <div>
-                  <img src="" alt="">
+                  <img src="../assets/img1/shw (8).png" alt="">
               </div>
               <div>
-                  <img src="" alt="">
+                  <img src="../assets/img1/shw (11).png" alt="">
               </div>
         </section>
         <section class="sweet">
@@ -127,6 +128,10 @@
                 <div>
                     <p>New product area</p>
                     <p>甜点系列</p>
+
+                </div>
+                <div class="stimg">
+                    <img src="../assets/img1/shw (4).png" alt="">
                 </div>
             </div>
             <div class="smid">
@@ -181,14 +186,21 @@
             </div>
         </section>
         <section class="gg2">
-            <div></div>
-            <div></div>
+            <div>
+                <img src="../assets/img1/shw (12).png" alt="">
+            </div>
+            <div>
+                <img src="../assets/img1/shw (13).png" alt="">
+            </div>
         </section>
         <section class="girl">
             <div class="gtop">
                 <div>
                     <p>New product area</p>
                     <p>女神系列</p>
+                </div>
+                <div class="gtimg">
+                    <img src="../assets/img1/shw (4).png" alt="">
                 </div>
             </div>
             <div class="gmid">
@@ -339,9 +351,11 @@
         }
     }
     section.classic{
-        width: 855px;
+        width: 1200px;
         height: auto;
         margin: 0 auto;
+        padding: 0 160px;
+        box-sizing: border-box;
         ul{
             width: 100%;
             height: auto;
@@ -354,11 +368,14 @@
                     text-align: center;
                     position: relative;
                     .ctimg{
+                        width: auto;
+                        height: auto;
                         position: absolute;
                         left:0;
                         right: 0;
                         top: -20px;
                         margin: 0 auto;
+                        z-index: -1;
                     }
                     div{
                         width: 100%;
@@ -469,7 +486,20 @@
         width: 100%;
         height: 296px;
         margin-bottom: 65px;
-        background: red;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        position: relative;
+        .bb{
+            width: 1200px;
+            height: 55px;
+            background: #ffffff;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            margin:  0 auto;
+        }
         div{
             width: 33.333%;
             height: auto;
@@ -480,13 +510,14 @@
         }
     }
     section.sweet{
-        width: 855px;
+        width: 1200px;
         height: auto;
         margin: 0 auto;
         .stop{
             height: 228px;
             width: 100%;
             text-align: center;
+            position: relative;
             div{
                 width: 100%;
                 height: 100%;
@@ -495,6 +526,16 @@
                 p:last-child{
                     font-size: 18px;
                 }
+            }
+            .stimg{
+                width: auto;
+                height: auto;
+                position: absolute;
+                left:0;
+                right: 0;
+                top: -20px;
+                margin: 0 auto;
+                z-index: -1;
             }
         }
         .smid{
@@ -507,10 +548,16 @@
                 display: flex;
                 justify-content: space-between;
                 flex-wrap: wrap;
+                li:hover{
+                    background: #fafafa;
+                    box-shadow: 3px 3px 50px 10px #EBEBEB;
+                }
                 li{
-                    width: 233px;
-                    height: 357px;
+                    width: 315px;
+                    height: 412px;
                     margin-bottom: 22px;
+                    padding:43px 38px 30px;
+                    box-sizing: border-box;
                     div{
                         width: 100%;
                         height: auto;
@@ -536,6 +583,7 @@
                         }
                     }
                 }
+
             }
         }
         .sbot{
@@ -568,12 +616,16 @@
         }
     }
     section.gg2{
-        width: 855px;
+        width: 1200px;
         height: auto;
         margin: 0 auto;
+        display: flex;
+        margin-top: 86px;
         div{
             width: auto;
             height: auto;
+           display: flex;
+            align-items: center;
             img{
                 display: block;
                 width: 100%;
@@ -581,13 +633,14 @@
         }
     }
     section.girl{
-        width: 855px;
+        width: 1200px;
         height: auto;
         margin: 0 auto;
         .gtop{
             height: 228px;
             width: 100%;
             text-align: center;
+            position: relative;
             div{
                 width: 100%;
                 height: 100%;
@@ -596,6 +649,16 @@
                 p:last-child{
                     font-size: 18px;
                 }
+            }
+            .gtimg{
+                width: auto;
+                height: auto;
+                position: absolute;
+                left:0;
+                right: 0;
+                top: -20px;
+                margin: 0 auto;
+                z-index: -1;
             }
         }
         .gmid{
@@ -608,10 +671,16 @@
                 display: flex;
                 justify-content: space-between;
                 flex-wrap: wrap;
+                li:hover{
+                    background: #fafafa;
+                    box-shadow: 3px 3px 50px 10px #EBEBEB;
+                }
                 li{
-                    width: 233px;
-                    height: 357px;
+                    width: 315px;
+                    height: 412px;
                     margin-bottom: 22px;
+                    padding:43px 38px 30px;
+                    box-sizing: border-box;
                     div{
                         width: 100%;
                         height: auto;
