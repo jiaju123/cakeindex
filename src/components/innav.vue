@@ -103,10 +103,10 @@
             return {
                 arr:[
                     {name:'',to:'/index',id:''},
-                    {name:'',to:'/cate:id',id:''},
-                    {name:'',to:'/cate:id',id:''},
-                    {name:'',to:'/cate:id',id:''},
-                    {name:'',to:'/inabout',id:''},
+                    {name:'',to:'/cate/:id',id:''},
+                    {name:'',to:'/cate/:id',id:''},
+                    {name:'',to:'/cate/:id',id:''},
+                    {name:'',to:'/indexcar',id:''},
                 ]
             }
         },
