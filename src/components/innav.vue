@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="top">
-            <div class="logo"><img src="../assets/img2/navlogo.png" alt=""></div>
+            <div class="logo"><img src="../assets/lhyimg/navlogo.png" alt=""></div>
             <ul class="nav">
                 <li v-for="item in arr">
                     <router-link :to="item.to">{{item.name}}</router-link>
@@ -25,15 +25,15 @@
                         </div>
                         <div class="bot">
                             <div class="p">
-                                <span><img src="../assets/img2/1.png" alt=""></span>
+                                <span><img src="../assets/lhyimg/1.png" alt=""></span>
                                 <p>山西省太原市小店区平阳路学府街口开通大厦2层</p>
                             </div>
                             <div class="p">
-                                <span><img src="../assets/img2/2.png" alt=""></span>
+                                <span><img src="../assets/lhyimg/2.png" alt=""></span>
                                 <p>www.baid.com</p>
                             </div>
                             <div class="p">
-                                <span><img src="../assets/img2/3.png" alt=""></span>
+                                <span><img src="../assets/lhyimg/3.png" alt=""></span>
                                 <p>0351-6144009/13712344321</p>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                             <p class="cttd">您可以通过一方式联系我们</p>
                         </div>
                         <div class="erweima">
-                            <img src="../assets/img2/4.png" alt="">
+                            <img src="../assets/lhyimg/4.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -301,4 +301,4 @@
             }
         }
     }
-</style> 
+</style>
