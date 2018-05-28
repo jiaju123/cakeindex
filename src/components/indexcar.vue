@@ -9,7 +9,8 @@
       <div class="listleft">
         <div class="touxiang">
           <div class="touleft">
-            <img src="" alt="">
+            <img src="../assets/img3/tou.png" height="77" width="78"/>
+
           </div>
           <div class="touright">
             <p class="p1">我是小班长</p>
@@ -25,11 +26,7 @@
         </ul>
       </div>
       <div class="listright">
-        <ul class="ding">
-          <li v-for="item in crr">
-            <router-link :to="item.to">{{item.name}}</router-link>
-          </li>
-        </ul>
+
         <ul class="title">
           <li class="tit1">产品信息</li>
           <li class="tit2">产品单价</li>
@@ -41,11 +38,71 @@
         <ul class="cont">
           <li v-for="">
             <div class="cont1">
+
               <div class="cont_img">
-                <img src="" alt="">
+                <img src="../assets/img3/kk.png"/>
               </div>
+
               <div class="cont_text">
-                <p class="p1">上的覅金佛是斗殴事件发放假哦i的飞机</p>
+                <p class="p1">奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
+                <p class="p2">三种口味</p>
+              </div>
+            </div>
+            <div class="cont2">299</div>
+            <div class="cont2">2</div>
+            <div class="cont2">578</div>
+            <div class="cont3">
+              <div class="cont3_a">
+                <img src="../assets/img3/qq .png"/>
+              </div>
+              <p class="p4">运送中</p>
+            </div>
+            <div class="cont4">
+              <div class="cont4_a">
+
+                <button class="input"></button>
+                <img src="../assets/img3/tt.png" height="51" width="120"/>
+              </div>
+            </div>
+          </li>
+          <li v-for="">
+            <div class="cont1">
+
+              <div class="cont_img">
+                <img src="../assets/img3/kk.png"/>
+              </div>
+
+              <div class="cont_text">
+                <p class="p1">奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
+                <p class="p2">三种口味</p>
+              </div>
+            </div>
+            <div class="cont2">299</div>
+            <div class="cont2">2</div>
+            <div class="cont2">578</div>
+            <div class="cont3">
+              <div class="cont3_a">
+                <img src="../assets/img3/qq .png"/>
+              </div>
+              <p class="p4">运送中</p>
+            </div>
+            <div class="cont4">
+              <div class="cont4_a">
+
+                <button class="input"></button>
+                <img src="../assets/img3/tt.png" height="51" width="120"/>
+              </div>
+            </div>
+          </li>
+          <li v-for="">
+            <div class="cont1">
+
+              <div class="cont_img">
+                <img src="../assets/img3/kk.png"/>
+              </div>
+
+              <div class="cont_text">
+                <p class="p1">奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
                 <p class="p2">三种口味</p>
               </div>
             </div>
@@ -85,26 +142,15 @@
     name: 'indexcar',
     data(){
       return {
-
         brr:[
           {name:'我丨的丨订丨单',to:'',id:''},
-          {name:'我丨的丨收丨藏',to:'',id:''},
-          {name:'我丨的丨优丨惠丨卷',to:'',id:''},
-          {name:'我丨的丨vip',to:'',id:''},
-
-        ],
-        crr:[
-          {name:'全部订单',to:'',id:''},
-          {name:'成功订单',to:'',id:''},
-          {name:'历史订单',to:'',id:''},
-          {name:'失败订单',to:'',id:''},
+          {name:'我丨的丨购丨物丨车',to:'',id:''},
         ],
         drr:[],
         created(){
           this.$http.get("/api/index/orders").then(res=>{
             console.log(res);
             this.tableData=res.body;
-
           })
         },
       }
@@ -168,6 +214,7 @@
           border-shadow:1px,1px,1px,#ccc;
           img{
             width: 100%;
+
           }
         }
         .touright{
@@ -260,7 +307,7 @@
       .cont{
         width: 100%;
         height: auto;
-        border-bottom:1px solid #ccc ;
+
         li{
           width: 100%;
           height: 182px;
@@ -268,6 +315,7 @@
           box-sizing: border-box;
           padding-left: 30px;
           display: flex;
+          border-bottom:1px solid #ccc ;
           color: #333333;
           .cont1{
             width: 265px;
@@ -276,11 +324,12 @@
             .cont_img{
               width: 93px;
               height: 103px;
-              background: #55a532;
-              +img{
-                width:100%;
-              }
+              background: yellow;
+
+
+
             }
+
             .cont_text{
               width: 172px;
               height: 100%;
