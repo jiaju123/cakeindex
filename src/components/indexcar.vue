@@ -39,7 +39,7 @@
           <li class="tit4">操作</li>
         </ul>
         <ul class="cont">
-          <li>
+          <li v-for="">
             <div class="cont1">
               <div class="cont_img">
                 <img src="" alt="">
@@ -69,6 +69,15 @@
         </ul>
       </div>
     </div>
+    <div class="fen">
+      <div class="fenbox">
+        <el-pagination
+          layout="prev, pager, next"
+          :total="50">
+        </el-pagination>
+
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -89,16 +98,35 @@
           {name:'成功订单',to:'',id:''},
           {name:'历史订单',to:'',id:''},
           {name:'失败订单',to:'',id:''},
+        ],
+        drr:[],
+        created(){
+          this.$http.get("/api/index/orders").then(res=>{
+            console.log(res);
+            this.tableData=res.body;
 
-        ]
-
-
+          })
+        },
       }
+
     }
 
   }
 </script>
 <style scoped lang='scss'>
+  .fen{
+    width: 1200px;
+    height: 280px;
+    margin: 0 auto;
+    padding-top: 102px;
+    padding-left: 850px;
+    box-sizing: border-box;
+    .fenbox{
+      width: 100%;
+      height: 35px;
+    }
+
+  }
 
   .bottom{
     width: 1200px;
