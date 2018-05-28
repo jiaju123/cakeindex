@@ -251,9 +251,13 @@
                         through P2P accelerates the function to help users to speed up dow
                     </p>
                     <div class="more"><a href="">MORE</a></div>
+                    <div class="video">
+                        <img src="../assets/img/view.jpg" alt="" style="width: 100%">
+                    </div>
                 </div>
             </div>
         </section>
+
     </div>
 </template>
 <script>
@@ -621,6 +625,8 @@
         margin: 0 auto;
         display: flex;
         margin-top: 86px;
+        display: flex;
+        justify-content: center;
         div{
             width: auto;
             height: auto;
@@ -730,9 +736,14 @@
                     border-radius: 15px;
                     line-height: 27px;
                     text-align: center;
+                    margin-bottom: 50px;
                     a{
                         color: #ff6d8a;
                     }
+                }
+                .video{
+                    width: 100%;
+                    height: 345px;
                 }
             }
         }
