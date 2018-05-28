@@ -249,12 +249,15 @@
             return {
                 arr:[
                     {name:'',to:'/index',id:''},
+
                     {name:'',to:'/cate:id',id:''},
                     {name:'',to:'/cate:id',id:''},
                     {name:'',to:'/cate:id',id:''},
                     {name:'',to:'/inabout',id:''},
                 ],
                 form:{zhanghao:'',pass:''}
+                ]
+
             }
         },
         created(){
@@ -842,4 +845,4 @@
             }
         }
     }
-</style> 
+</style>
