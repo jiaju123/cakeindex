@@ -18,7 +18,6 @@
                 <span>幸福</span>
                 <div class="price">
                     <p>199<span>RMB</span></p>
-
                     <button class="shop">立即购买</button>
                     <button class="car iconfont icon-cart-copy"></button>
                 </div>
