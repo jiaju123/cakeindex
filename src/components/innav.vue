@@ -165,12 +165,12 @@
     }
     .bottom{
         width:100%;
-        height:555px;
+        height:505px;
         background: #ffe5ea;
         .bottombox{
             width:1200px;
             margin:0 auto;
-            padding-top: 210px;
+            padding-top: 160px;
             display: flex;
             justify-content:space-around;
             .box1{
