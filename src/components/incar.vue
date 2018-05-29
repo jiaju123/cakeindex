@@ -278,15 +278,6 @@
                 width: 500px;
                 height: 55px;
                 float: right;
-                .el-steps{
-                    .is-text{
-                        width: 17px;
-                        height: 17px;
-                        box-sizing: border-box;
-                        border: 1px solid #BBBBBB;
-                        background: #fff;
-                    }
-                }
             }
         }
         .incar-center{

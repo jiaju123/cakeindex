@@ -10,7 +10,7 @@
             <div class="border"></div>
         </div>
         <ul class="picture">
-            <li class="active">
+            <li>
                 <div class="img">
                     <img src="../assets/img/zy1.jpg" alt="" style="width: 100%">
                 </div>
@@ -175,16 +175,21 @@
                 </div>
                 <div class="bor"></div>
             </li>
-            <ul class="page">
-                <li class="next">PREVIOUS</li>
-                <li>1</li>
-                <li>2</li>
-                <li class="active">3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li class="next">NEXT</li>
-            </ul>
+            <div class="page">
+                <!--<li class="next">PREVIOUS</li>-->
+                <!--<li>1</li>-->
+                <!--<li>2</li>-->
+                <!--<li class="active">3</li>-->
+                <!--<li>4</li>-->
+                <!--<li>5</li>-->
+                <!--<li>6</li>-->
+                <!--<li class="next">NEXT</li>-->
+                <el-pagination
+                        background=""
+                        layout="prev, pager, next"
+                        :total="60">
+                </el-pagination>
+            </div>
             <div class="video">
                 <img src="../assets/img/view.jpg" alt="" style="width: 100%">
             </div>
@@ -257,6 +262,7 @@
             > li{
                 width: 310px;
                 height: 410px;
+                padding: 50px 38px 0;
                 float: left;
                 padding-top: 50px;
                 box-sizing: border-box;
@@ -332,31 +338,8 @@
                     display: none;
                 }
             }
-            > li.active{
-                width: 310px;
-                height: 410px;
-                padding: 50px 38px 0;
-                background: #FAFAFA;
-                box-sizing: border-box;
-                box-shadow: 3px 3px 50px 10px #EBEBEB;
-                .price{
-                    .shop{
-                        display: block;
-                    }
-                    .car{
-                        display: block;
-                    }
-                }
-                .bor{
-                    display: block;
-                }
-            }
             > li:hover{
-                width: 310px;
-                height: 410px;
-                padding: 50px 38px 0;
                 background: #FAFAFA;
-                box-sizing: border-box;
                 box-shadow: 3px 3px 50px 10px #EBEBEB;
                 .price{
                     .shop{
@@ -395,7 +378,6 @@
             .video{
                 width: 100%;
                 height: 345px;
-                background: red;
             }
         }
     }
