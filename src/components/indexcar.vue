@@ -143,8 +143,8 @@
     data(){
       return {
         brr:[
-          {name:'我丨的丨订丨单',to:'',id:''},
-          {name:'我丨的丨购丨物丨车',to:'',id:''},
+          {name:'我丨的丨订丨单',to:'/indexcar',id:''},
+          {name:'我丨的丨购丨物丨车',to:'/incar',id:''},
         ],
         drr:[],
         created(){
