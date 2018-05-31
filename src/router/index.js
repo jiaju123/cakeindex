@@ -4,6 +4,8 @@ import Innav from '@/components/innav'
 import Index from '@/components/index'
 import Incate from '@/components/incate'
 import Incar from '@/components/incar'
+import Inabout from '@/components/inabout'
+import Inorder from '@/components/inorder'
 import Indexcar from '@/components/indexcar'
 Vue.use(Router);
 
@@ -34,6 +36,14 @@ export default new Router({
             path:'/indexcar',
             component: Indexcar,
           },
+          {
+              path:'/inabout',
+              component: Inabout,
+          },
+          {
+              path:'/inorder',
+              component: Inorder,
+          }
       ]
     },
     {

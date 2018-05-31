@@ -109,7 +109,7 @@
                         </li>
                         <li style="padding-left: 110px;box-sizing: border-box">
 
-                                <input type="password" placeholder="请再次输入您的密码" style="padding-left:15px;width:224px;height:33px">
+                            <input type="password" placeholder="请再次输入您的密码" style="padding-left:15px;width:224px;height:33px">
 
                         </li>
                     </ul>
@@ -249,10 +249,10 @@
             return {
                 arr:[
                     {name:'',to:'/index',id:''},
-                    {name:'',to:'/cate:id',id:''},
-                    {name:'',to:'/cate:id',id:''},
-                    {name:'',to:'/cate:id',id:''},
-                    {name:'',to:'/inabout',id:''},
+                    {name:'',to:'/incate',id:''},
+                    {name:'',to:'/incate',id:''},
+                    {name:'',to:'/incate',id:''},
+                    {name:'',to:'/indexcar',id:''},
                 ],
                 form:{zhanghao:'',pass:''},
                 input10:"",
@@ -335,7 +335,7 @@
                 })
             }
 
-    }
+        }
     }
 </script>
 <style scoped lang='scss'>
@@ -408,13 +408,13 @@
                         justify-content: flex-start;
                         margin-bottom: 34px;
                         div:first-child{
-                             margin-right: 8px;
-                             width: 42px;
+                            margin-right: 8px;
+                            width: 42px;
                             img {
                                 display: block;
                                 width: 100%;
                             }
-                         }
+                        }
                         div:nth-child(2){
                             width: 48px;
                             p:last-child{
@@ -577,13 +577,13 @@
                         justify-content: flex-start;
                         margin-bottom: 19px;
                         div:first-child{
-                             margin-right: 8px;
-                             width: 42px;
+                            margin-right: 8px;
+                            width: 42px;
                             img {
                                 display: block;
                                 width: 100%;
                             }
-                         }
+                        }
                         div:nth-child(2){
                             width: 48px;
                             p:last-child{
