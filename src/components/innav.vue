@@ -22,7 +22,7 @@
                                 <p>NAME</p>
                             </div>
                             <div>
-                                <input type="text" placeholder="请输入用户名/邮箱/手机号">
+                                <input type="text" placeholder="请输入用户名/邮箱/手机号" v-model="input10">
                             </div>
                         </li>
                         <li>
@@ -34,13 +34,13 @@
                                 <p>PASSWORD</p>
                             </div>
                             <div>
-                                <input type="text" placeholder="请输入密码">
+                                <input type="password" placeholder="请输入密码" v-model="input11">
                                 <input type="checkbox" class="che"><span>忘记密码</span>
                             </div>
                         </li>
                     </ul>
                     <div class="ttan">
-                        <div>登录</div>
+                        <div @click="login">登录</div>
                         <div>注册</div>
                     </div>
                     <div class="ttz">
@@ -104,12 +104,12 @@
                                 <p>PASSWORD</p>
                             </div>
                             <div>
-                                <input type="text" placeholder="请输入密码" v-model="form.pass">
+                                <input type="password" placeholder="请输入密码" v-model="form.pass">
                             </div>
                         </li>
                         <li style="padding-left: 110px;box-sizing: border-box">
 
-                                <input type="text" placeholder="请再次输入您的密码" style="padding-left:15px;width:224px;height:33px">
+                                <input type="password" placeholder="请再次输入您的密码" style="padding-left:15px;width:224px;height:33px">
 
                         </li>
                     </ul>
@@ -249,15 +249,14 @@
             return {
                 arr:[
                     {name:'',to:'/index',id:''},
-
                     {name:'',to:'/cate:id',id:''},
                     {name:'',to:'/cate:id',id:''},
                     {name:'',to:'/cate:id',id:''},
                     {name:'',to:'/inabout',id:''},
                 ],
-                form:{zhanghao:'',pass:''}
-                ]
-
+                form:{zhanghao:'',pass:''},
+                input10:"",
+                input11:""
             }
         },
         created(){
@@ -307,13 +306,31 @@
                         "content-type":"application/json"
                     }
                 }).then(response=>{
-                    if (response.body){
+                    if (response.body=="ok"){
                         this.$message('注册成功！');
                         setTimeout(()=>{
                             this.$router.push("/");
                         },1000);
                     }else{
-                        this.$message('注册失败！');
+                        this.$message('注册失败,用户已存在！');
+                    }
+                })
+            },
+            login(){
+                let obj = {};
+                obj.zhanghao = this.input10;
+                obj.pass = this.input11;
+                this.$http.post('/api/index/innav/login',obj,{
+                    headers: {
+                        "content-type": 'application/json'
+                    }
+                }).then(res => {
+                    if (res.body!= 'ok') {
+                        alert(res.body)
+                    } else {
+                        this.$message('登录成功！');
+                        let tan=document.querySelector('.tan');
+                        tan.style.display='none';
                     }
                 })
             }

@@ -66,10 +66,10 @@
                             </div>
                             <div class="cmrb">
                                 <div class="cb1">
-                                    <span></span>
+                                    <span style="color: #ffffff">￥</span>
                                 </div>
                                 <div class="cb2">
-                                    <span></span>
+                                    <span class="iconfont icon-gouwucheiconling" style="color: #ffffff"></span>
                                 </div>
                             </div>
                         </div>
@@ -96,10 +96,10 @@
                             </div>
                             <div class="cmrb">
                                 <div class="cb1">
-                                    <span></span>
+                                    <span style="color: #ffffff">￥</span>
                                 </div>
                                 <div class="cb2">
-                                    <span></span>
+                                    <span class="iconfont icon-gouwucheiconling" style="color: #ffffff"></span>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
             <div class="stop">
                 <div>
                     <p>New product area</p>
-                    <p>甜点系列</p>
+                    <p>甜蜜系列</p>
 
                 </div>
                 <div class="stimg">
@@ -136,37 +136,13 @@
             </div>
             <div class="smid">
                 <ul>
-                    <li>
+                    <li v-for="item in arr">
                         <div>
-                            <img src="" alt="">
+                            <img :src="item.desc1[0].url" alt="">
                         </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
+                        <h3>{{item.name}}</h3>
+                        <p class="sp1">{{item.title1}}</p>
+                        <p class="sp2">{{item.pricen}}<span>RMB</span></p>
                     </li>
                 </ul>
             </div>
@@ -205,37 +181,13 @@
             </div>
             <div class="gmid">
                 <ul>
-                    <li>
+                    <li v-for="item in brr">
                         <div>
-                            <img src="" alt="">
+                            <img :src="item.desc1[0].url" alt="">
                         </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                        <h3>蓝莓味奶油蛋糕</h3>
-                        <p class="sp1">幸福滋味，美味优品</p>
-                        <p class="sp2">199<span>RMB</span></p>
+                        <h3>{{item.name}}</h3>
+                        <p class="sp1">{{item.title1}}</p>
+                        <p class="sp2">{{item.pricen}}<span>RMB</span></p>
                     </li>
                 </ul>
             </div>
@@ -268,6 +220,8 @@
         name: 'index',
         data(){
             return {
+                arr:[],
+                brr:[],
                 swiperOption: {
                     pagination: {
                         el: '.swiper-pagination',
@@ -283,7 +237,16 @@
         },
         created(){
            this.$http.get('/api/index/index').then(res=>{
-               console.log(res)
+               res.body.forEach((v,i)=> {
+                   if(v.cid==2){
+                       v.desc1=JSON.parse(v.desc1);
+                       this.arr.push(v);
+                   }else if(v.cid==1){
+                       v.desc1=JSON.parse(v.desc1);
+                       this.brr.push(v);
+                   }
+               })
+               console.log(this.arr);
            })
         },
         components: {
