@@ -10,184 +10,27 @@
             <div class="border"></div>
         </div>
         <ul class="picture">
-            <li>
+            <li v-for="(item,index) in arr">
                 <div class="img">
-                    <img src="../assets/img/zy1.jpg" alt="" style="width: 100%">
+                    <img :src="item.desc1[0].url" alt="" style="width: 100%">
                 </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
+                <p>{{item.name}}</p>
+                <span>{{item.title1}}</span>
                 <div class="price">
-                    <p>199<span>RMB</span></p>
+                    <p>{{item.pricen}}<span>RMB</span></p>
                     <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy2.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy3.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy4.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy5.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy6.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy1.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy2.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy3.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy4.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy5.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
-                </div>
-                <div class="bor"></div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="../assets/img/zy6.jpg" alt="" style="width: 100%">
-                </div>
-                <p>蛋糕</p>
-                <span>幸福</span>
-                <div class="price">
-                    <p>199<span>RMB</span></p>
-
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy"></button>
+                    <button class="car iconfont icon-cart-copy" @click="addcar(item)"></button>
                 </div>
                 <div class="bor"></div>
             </li>
             <div class="page">
-                <!--<li class="next">PREVIOUS</li>-->
-                <!--<li>1</li>-->
-                <!--<li>2</li>-->
-                <!--<li class="active">3</li>-->
-                <!--<li>4</li>-->
-                <!--<li>5</li>-->
-                <!--<li>6</li>-->
-                <!--<li class="next">NEXT</li>-->
                 <el-pagination
-                        background=""
-                        layout="prev, pager, next"
-                        :total="60">
+                        class="page"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-size="size"
+                        layout="total , prev, pager, next, jumper"
+                        :total="total">
                 </el-pagination>
             </div>
             <div class="video">
@@ -202,13 +45,74 @@
         name: 'incate',
         data(){
             return {
-
-            }
+                data: [],
+                total: 0,
+                currentPage: 1,
+                size: 8,
+                arr:[],
+                count:0
+            };
         },
-//        created(){
-//            this.$http.get("/api/index/incate/cate").then(val =>{
-//                console.log(val);
-//            })
+        created(){
+            this.$http.get("/api/index/incate").then(val =>{
+                val.body.forEach((v,i)=>{
+                    v.desc1=JSON.parse(v.desc1);
+                    this.arr.push(v);
+                })
+                this.arr=val.body;
+            })
+        },
+//        methods:{
+//            handleCurrentChange(val) {
+//                this.$http.get('/api/index/incate/hot?nub=' + val + '&size=' + this.size).then(res => {
+//                    let hot = [];
+//                    res.body.forEach(val => {
+//                        let aa = JSON.parse(val);
+//                        aa.img = JSON.parse(aa.img);
+//                        hot.push(aa);
+//                    });
+//                    this.data = hot;
+//                    console.log(hot);
+//                })
+//            },
+//            handleCommand(command) {
+//                if (command == 'asc') {
+//                    this.data.sort((a, b) => {
+//                        return a.price - b.price
+//                    })
+//                } else {
+//                    this.data.sort((a, b) => {
+//                        return b.price - a.price
+//                    })
+//                }
+//            },
+//            addcar(data){
+//                console.log(data);
+//                let obj = {
+//                    name: data.name,
+//                    taste:data.taste1,
+//                    price: data.pricen,
+//                    count: 1,
+//                    img: data.img,
+//                    gid: data.gid,
+//                }
+//
+//                this.$http.post('/api/index/incate/addbuycar', obj, {
+//                    headers: {
+//                        "content-type": "application/json"
+//                    }
+//                }).then(res => {
+//                    if (res.body=='ok') {
+//                        this.$message({
+//                            message: '添加成功',
+//                            type: 'success'
+//                        });
+//                    }else{
+//                        this.$message.error('添加失败')
+//                    }
+//                })
+//
+//            }
 //        }
     }
 </script>
@@ -264,7 +168,6 @@
                 height: 410px;
                 padding: 50px 38px 0;
                 float: left;
-                padding-top: 50px;
                 box-sizing: border-box;
                 position: relative;
                 .img{
@@ -323,6 +226,8 @@
                         display: none;
                         font-size: 10px;
                         color: #fff;
+                        text-align: center;
+                        line-height: 18px;
                     }
                 }
                 .bor{

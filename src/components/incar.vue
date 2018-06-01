@@ -25,21 +25,21 @@
                 <li>商品小计</li>
                 <li>操作</li>
             </ul>
-            <li>
+            <li v-for="item in arr" :key="item.id" >
                 <input type="radio">
                 <router-link to="">
                     <div class="hover">
                         <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
+                            <img :src="item.img" alt="" style="width: 100%">
                         </div>
                         <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
+                            <p>{{item.title}}</p>
                             <span>三种口味</span>
                         </div>
                         <div class="xuan iconfont icon-xinxi"></div>
                     </div>
                 </router-link>
-                <div class="price">299.00</div>
+                <div class="price">{{item.price}}</div>
                 <div class="button">
                     <button class="jian" @click="name--">-</button>
                     <span class="i">{{name}}</span>
@@ -51,168 +51,7 @@
                     <button class="shou">移入收藏夹</button>
                 </div>
             </li>
-            <li>
-                <input type="radio">
-                <router-link to="">
-                    <div class="hover">
-                        <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
-                        </div>
-                        <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
-                            <span>三种口味</span>
-                        </div>
-                        <div class="xuan iconfont icon-xinxi"></div>
-                    </div>
-                </router-link>
-                <div class="price">299.00</div>
-                <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
-                </div>
-                <div class="zongji">5999.00</div>
-                <div class="del">
-                    <button class="delete">删除</button>
-                    <button class="shou">移入收藏夹</button>
-                </div>
-            </li>
-            <li>
-                <input type="radio">
-                <router-link to="">
-                    <div class="hover">
-                        <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
-                        </div>
-                        <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
-                            <span>三种口味</span>
-                        </div>
-                        <div class="xuan iconfont icon-xinxi"></div>
-                    </div>
-                </router-link>
-                <div class="price">299.00</div>
-                <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
-                </div>
-                <div class="zongji">5999.00</div>
-                <div class="del">
-                    <button class="delete">删除</button>
-                    <button class="shou">移入收藏夹</button>
-                </div>
-            </li>
-            <li>
-                <input type="radio">
-                <router-link to="">
-                    <div class="hover">
-                        <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
-                        </div>
-                        <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
-                            <span>三种口味</span>
-                        </div>
-                        <div class="xuan iconfont icon-xinxi"></div>
-                    </div>
-                </router-link>
-                <div class="price">299.00</div>
-                <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
-                </div>
-                <div class="zongji">5999.00</div>
-                <div class="del">
-                    <button class="delete">删除</button>
-                    <button class="shou">移入收藏夹</button>
-                </div>
-            </li>
-            <li>
-                <input type="radio">
-                <router-link to="">
-                    <div class="hover">
-                        <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
-                        </div>
-                        <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
-                            <span>三种口味</span>
-                        </div>
-                        <div class="xuan iconfont icon-xinxi"></div>
-                    </div>
-                </router-link>
-                <div class="price">299.00</div>
-                <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
-                </div>
-                <div class="zongji">5999.00</div>
-                <div class="del">
-                    <button class="delete">删除</button>
-                    <button class="shou">移入收藏夹</button>
-                </div>
-            </li>
-            <li>
-                <input type="radio">
-                <router-link to="">
-                    <div class="hover">
-                        <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
-                        </div>
-                        <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
-                            <span>三种口味</span>
-                        </div>
-                        <div class="xuan iconfont icon-xinxi"></div>
-                    </div>
-                </router-link>
-                <div class="price">299.00</div>
-                <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
-                </div>
-                <div class="zongji">5999.00</div>
-                <div class="del">
-                    <button class="delete">删除</button>
-                    <button class="shou">移入收藏夹</button>
-                </div>
-            </li>
-            <li>
-                <input type="radio">
-                <router-link to="">
-                    <div class="hover">
-                        <div class="car-img">
-                            <img src="../assets/img/zy-car.jpg" alt="" style="width: 100%">
-                        </div>
-                        <div class="word">
-                            <p>奶油慕斯蛋糕 是讨好味觉的 艺术【草莓口味】</p>
-                            <span>三种口味</span>
-                        </div>
-                        <div class="xuan iconfont icon-xinxi"></div>
-                    </div>
-                </router-link>
-                <div class="price">299.00</div>
-                <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
-                </div>
-                <div class="zongji">5999.00</div>
-                <div class="del">
-                    <button class="delete">删除</button>
-                    <button class="shou">移入收藏夹</button>
-                </div>
-            </li>
-            <p class="bottom">
-                <input type="checkbox">
-                <span>全选</span>
-                <span>加入购物车</span>
-                <span>删除</span>
-            </p>
+            <p class="bottom"></p>
             <div class="youhui">
                 <div class="left">
                     <small>【&nbsp;&nbsp;<span>现金折扣 Cash discount</span>&nbsp;&nbsp;】</small>
@@ -255,9 +94,17 @@
         name: "incar",
         data() {
             return {
+                arr:[],
                 name:0,
             };
         },
+        created(){
+            let uid = this.$router.id;
+            this.$http.get("/api/index/incar/car?uid="+uid).then(val =>{
+                this.arr=val.body;
+                console.log(val);
+            })
+        }
     }
 </script>
 <style scoped lang="scss">
@@ -446,7 +293,7 @@
             .bottom{
                 width: 100%;
                 height: 20px;
-                padding: 15px 0 20px;
+                padding: 0;
                 display: flex;
                 margin-bottom: 20px;
                 border-bottom: 2px solid #A4A4A4;
