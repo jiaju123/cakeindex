@@ -82,9 +82,13 @@
                 obj.text=lib.innerHTML;
                 obj.count=this.count;
                 this.$http.post('/api/index/xiangqing/xinxi',obj,{headers:{"content-type":'application/json'}}).then(res=>{
-                    console.log(res.body);
-                    if(res.body==='ok'){
-                        alert('成功!');
+                    if (res.body=='ok') {
+                        this.$message({
+                            message: '添加成功',
+                            type: 'success'
+                        });
+                    }else{
+                        this.$message.error('添加失败')
                     }
                 })
             }

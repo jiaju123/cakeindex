@@ -11,28 +11,30 @@
         </div>
         <ul class="picture">
             <li v-for="(item,index) in arr">
-                <div class="img">
-                    <img :src="item.desc1[0].url" alt="" style="width: 100%">
-                </div>
-                <p>{{item.name}}</p>
-                <span>{{item.title1}}</span>
-                <div class="price">
-                    <p>{{item.pricen}}<span>RMB</span></p>
-                    <button class="shop">立即购买</button>
-                    <button class="car iconfont icon-cart-copy" @click="addcar(item)"></button>
-                </div>
-                <div class="bor"></div>
+                <router-link :to="'/xiangqing/'+item.id">
+                    <div class="img">
+                        <img :src="item.desc1[0].url" alt="" style="width: 100%">
+                    </div>
+                    <p>{{item.name}}</p>
+                    <span>{{item.title1}}</span>
+                </router-link>
+                    <div class="price">
+                        <p>{{item.pricen}}<span>RMB</span></p>
+                        <button class="shop">立即购买</button>
+                        <button class="car iconfont icon-cart-copy" @click="addcar(item.id)"></button>
+                    </div>
+                    <div class="bor"></div>
             </li>
-            <div class="page">
-                <el-pagination
-                        class="page"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="size"
-                        layout="total , prev, pager, next, jumper"
-                        :total="total">
-                </el-pagination>
-            </div>
+            <!--<div class="page">-->
+                <!--<el-pagination-->
+                        <!--class="page"-->
+                        <!--@current-change="handleCurrentChange"-->
+                        <!--:current-page="currentPage"-->
+                        <!--:page-size="size"-->
+                        <!--layout="total , prev, pager, next, jumper"-->
+                        <!--:total="total">-->
+                <!--</el-pagination>-->
+            <!--</div>-->
             <div class="video">
                 <img src="../assets/img/view.jpg" alt="" style="width: 100%">
             </div>
@@ -62,7 +64,7 @@
                 this.arr=val.body;
             })
         },
-//        methods:{
+        methods:{
 //            handleCurrentChange(val) {
 //                this.$http.get('/api/index/incate/hot?nub=' + val + '&size=' + this.size).then(res => {
 //                    let hot = [];
@@ -86,34 +88,28 @@
 //                    })
 //                }
 //            },
-//            addcar(data){
-//                console.log(data);
-//                let obj = {
-//                    name: data.name,
-//                    taste:data.taste1,
-//                    price: data.pricen,
-//                    count: 1,
-//                    img: data.img,
-//                    gid: data.gid,
-//                }
-//
-//                this.$http.post('/api/index/incate/addbuycar', obj, {
-//                    headers: {
-//                        "content-type": "application/json"
-//                    }
-//                }).then(res => {
-//                    if (res.body=='ok') {
-//                        this.$message({
-//                            message: '添加成功',
-//                            type: 'success'
-//                        });
-//                    }else{
-//                        this.$message.error('添加失败')
-//                    }
-//                })
-//
-//            }
-//        }
+            addcar(gid){
+                let id=gid;
+                let obj = {
+                    gid:id
+                };
+                this.$http.post('/api/index/incate/addcar', obj, {
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                }).then(res => {
+                    if (res.body=='ok') {
+                        this.$message({
+                            message: '添加成功',
+                            type: 'success'
+                        });
+                    }else{
+                        this.$message.error('添加失败')
+                    }
+                })
+
+            }
+        }
     }
 </script>
 <style scoped lang='scss'>
