@@ -7,6 +7,7 @@ import Incar from '@/components/incar'
 import Inabout from '@/components/inabout'
 import Inorder from '@/components/inorder'
 import Indexcar from '@/components/indexcar'
+import Xiangqing from '@/components/xiangqing'
 Vue.use(Router);
 
 export default new Router({
@@ -43,6 +44,10 @@ export default new Router({
           {
               path:'/inorder',
               component: Inorder,
+          },
+          {
+              path:'/xiangqing/:id',
+              component: Xiangqing,
           }
       ]
     },

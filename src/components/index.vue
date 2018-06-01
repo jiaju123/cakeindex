@@ -137,12 +137,14 @@
             <div class="smid">
                 <ul>
                     <li v-for="item in arr">
-                        <div>
-                            <img :src="item.desc1[0].url" alt="">
-                        </div>
-                        <h3>{{item.name}}</h3>
-                        <p class="sp1">{{item.title1}}</p>
-                        <p class="sp2">{{item.pricen}}<span>RMB</span></p>
+                        <router-link :to="'/xiangqing/'+item.id">
+                            <div>
+                                <img :src="item.desc1[0].url" alt="">
+                            </div>
+                            <h3>{{item.name}}</h3>
+                            <p class="sp1">{{item.title1}}</p>
+                            <p class="sp2">{{item.pricen}}<span>RMB</span></p>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -182,12 +184,14 @@
             <div class="gmid">
                 <ul>
                     <li v-for="item in brr">
-                        <div>
-                            <img :src="item.desc1[0].url" alt="">
-                        </div>
-                        <h3>{{item.name}}</h3>
-                        <p class="sp1">{{item.title1}}</p>
-                        <p class="sp2">{{item.pricen}}<span>RMB</span></p>
+                        <router-link :to="'/xiangqing/'+item.id">
+                            <div>
+                                <img :src="item.desc1[0].url" alt="">
+                            </div>
+                            <h3>{{item.name}}</h3>
+                            <p class="sp1">{{item.title1}}</p>
+                            <p class="sp2">{{item.pricen}}<span>RMB</span></p>
+                        </router-link>
                     </li>
                 </ul>
             </div>
