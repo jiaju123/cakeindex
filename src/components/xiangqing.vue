@@ -76,7 +76,17 @@
                 })
             },
             addcar(){
-                console.log(1);
+                let lib=this.$refs.xxx.querySelector('li.active');
+                let obj={};
+                obj.id=this.$route.params.id;
+                obj.text=lib.innerHTML;
+                obj.count=this.count;
+                this.$http.post('/api/index/xiangqing/xinxi',obj,{headers:{"content-type":'application/json'}}).then(res=>{
+                    console.log(res.body);
+                    if(res.body==='ok'){
+                        alert('成功!');
+                    }
+                })
             }
         }
 
