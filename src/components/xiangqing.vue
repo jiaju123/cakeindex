@@ -14,11 +14,23 @@
                 <img src="../assets/img/zy5.jpg" alt="">
             </div>
             <div class="spright">
-                <p>让人无法拒绝的魔方蛋糕</p>
-                <p>魔方就像被赋予了生命一样</p>
-                <div></div>
-                <div class="count"></div>
-                <div class="kouwei"></div>
+                <p class="p1">{{arr.title2}}</p>
+                <p class="p2">{{arr.title3}}</p>
+                <div>{{arr.pricen}}<span>RMB</span><span class="yuanjia">原价</span>{{arr.priceo}}<span class="rmb">RMB</span></div>
+                <div class="count">请选择商品数量：
+                    <span class="jia" @click="add">+</span>
+                    <span>{{count}}</span>
+                    <span class="jian" @click="red">-</span>
+                </div>
+                <ul class="kouwei" ref="xxx">
+                    <p class="p3">请选择商品口味：</p>
+                    <li class="kouweibox"  @click="aa($event)">{{brr[0].kouwei}}</li>
+                    <li class="kouweibox"  @click="aa($event)">{{brr[1].kouwei}}</li>
+                    <li class="kouweibox"  @click="aa($event)">{{brr[2].kouwei}}</li>
+                </ul>
+                <div class="addcar" @click="addcar">
+                    加入购物车
+                </div>
             </div>
         </div>
     </div>
@@ -28,15 +40,46 @@
         name: 'xiangqing',
         data(){
             return {
-
+                arr:{},
+                brr:[
+                    {id:'a1',kouwei:''},
+                    {id:'a2',kouwei:''},
+                    {id:'a3',kouwei:''}
+                ],
+                count:1
             }
         },
         created(){
             let id= this.$route.params.id;
-            this.$http.get('/api/index/xiangqing?'+id).then(res=>{
-                console.log(res);
+            this.$http.get('/api/index/xiangqing?id='+id).then(res=>{
+                this.arr.title2=res.data[0].title2;
+                this.arr.title3=res.data[0].title3;
+                this.arr.pricen=res.data[0].pricen;
+                this.arr.priceo=res.data[0].priceo;
+                this.brr[0].kouwei=res.data[0].taste1;
+                this.brr[1].kouwei=res.data[0].taste2;
+                this.brr[2].kouwei=res.data[0].taste3
             })
         },
+        methods:{
+            add(){
+                this.count++;
+            },
+            red(){
+                this.count--;
+            },
+            aa(e){
+                let lib=this.$refs.xxx.querySelectorAll('li');
+                lib.forEach(val=>{
+                    val.classList.remove('active');
+                    e.target.classList.add('active');
+                })
+            },
+            addcar(){
+                console.log(1);
+            }
+        }
+
     }
 </script>
 <style scoped lang='scss'>
@@ -84,9 +127,11 @@
             height:650px;
             margin: 0 auto;
             .spleft{
-                width:582px;
-                height:485px;
+                width:482px;
+                height:385px;
                 float: left;
+                margin-top: 100px;
+                margin-left: 50px;
                 img{
                     width:100%;
                 }
@@ -95,7 +140,59 @@
                 width:600px;
                 height:485px;
                 float: right;
-
+                .p1{
+                    font-size: 22px;
+                    margin-top: 120px;
+                };
+                .p2{
+                    font-size: 15px;
+                    margin-top: 15px;
+                }
+                div{
+                    font-size: 33px;
+                    margin-top: 42px;
+                }
+                .yuanjia{
+                    font-size: 14px;
+                }
+                .rmb{
+                    font-size:10px;
+                }
+                span{
+                    margin-left: 10px;
+                }
+                .count{
+                    margin-top: 54px;
+                    font-size: 15px;
+                    color:#737373;
+                }
+                ul{
+                    color:#7d7d7d;
+                    margin-top: 20px;
+                    li{
+                        width:100px;
+                        float: left;
+                        border:1px solid #7d7d7d;
+                        text-align: center;
+                        padding: 5px 0;
+                        margin:10px 5px 0;
+                    }
+                    li.active{
+                        background: red;
+                        color:white;
+                    }
+                };
+                .addcar{
+                    width:199px;
+                    height:49px;
+                    text-align: center;
+                    line-height: 50px;
+                    font-size: 16px;
+                    background: red;
+                    color:white;
+                    border-radius: 10px;
+                    margin-top: 70px;
+                }
             }
         }
     }
