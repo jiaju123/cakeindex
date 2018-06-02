@@ -153,10 +153,14 @@
                     <router-link :to="item.to">{{item.name}}</router-link>
                 </li>
             </ul>
-            <div class="right">
+            <div class="right" v-if="flag">
                 <a  @click="tan">登录</a>
                 <span>/</span>
                 <a  @click="regist">注册</a>
+            </div>
+            <div class="right" v-else>
+                <span class="yonghu">{{nickname}}</span>
+                <a class="exitl" @click="exitl">注销</a>
             </div>
         </div>
         <router-view></router-view>
@@ -247,16 +251,19 @@
         name: 'innav',
         data(){
             return {
+                flag:true,
+                zhanghao:'',
                 arr:[
                     {name:'',to:'/index',id:''},
-                    {name:'',to:'/incate',id:''},
-                    {name:'',to:'/incate',id:''},
-                    {name:'',to:'/incate',id:''},
+                    {name:'',to:'/incate/2',id:''},
+                    {name:'',to:'/incate/3',id:''},
+                    {name:'',to:'/incate/4',id:''},
                     {name:'',to:'/indexcar',id:''},
                 ],
                 form:{zhanghao:'',pass:''},
                 input10:"",
-                input11:""
+                input11:"",
+                nickname:''
             }
         },
         created(){
@@ -336,10 +343,31 @@
                         this.$message('登录成功！');
                         let tan=document.querySelector('.tan');
                         tan.style.display='none';
+                        this.flag=false;
+                        localStorage.zhanghao=this.input10;
+                        let obj={};
+                        obj.zhanghao=localStorage.zhanghao;
+                        this.$http.post('/api/index/innav/loc',obj,{
+                            headers: {
+                                "content-type": 'application/json'
+                            }
+                        }).then(res=>{
+                            localStorage.id=res.data[0].id;
+                        });
+                        this.$http.post('/api/index/innav/nick',obj,{
+                            headers: {
+                                "content-type": 'application/json'
+                            }
+                        }).then(res=>{
+                            this.nickname=res.body[0].nickname;
+                        })
                     }
                 })
+            },
+            exitl(){
+                localStorage.clear();
+                this.flag=true;
             }
-
         }
     }
 </script>
@@ -726,6 +754,9 @@
             line-height:102px;
             a:hover{
                 color:red;
+            }
+            .exitl{
+                margin-left: 25px;
             }
         }
     }

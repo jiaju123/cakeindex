@@ -5,7 +5,7 @@
         </div>
         <div class="content">
             <div class="crumbs">
-                <p>首页<small class="iconfont icon-sanjiaoxing-copy"></small><span>糖蜜系列</span></p>
+                <p>首页<small class="iconfont icon-sanjiaoxing-copy"></small><span>{{cate}}</span></p>
             </div>
             <div class="border"></div>
         </div>
@@ -52,17 +52,36 @@
                 currentPage: 1,
                 size: 8,
                 arr:[],
-                count:0
+                count:0,
+                cate:''
             };
         },
         created(){
-            this.$http.get("/api/index/incate").then(val =>{
+            let id=this.$route.params.id;
+            this.$http.get("/api/index/incate?id="+id).then(val =>{
                 val.body.forEach((v,i)=>{
                     v.desc1=JSON.parse(v.desc1);
                     this.arr.push(v);
-                })
+                });
                 this.arr=val.body;
-            })
+            });
+            this.$http.get("/api/index/incate/cat?id="+id).then(res =>{
+                this.cate=res.data[0].name;
+            });
+        },
+        beforeRouteUpdate(to,from,next){
+            let id = to.params.id;
+            this.$http.get("/api/index/incate?id="+id).then(val =>{
+                val.body.forEach((v,i)=>{
+                    v.desc1=JSON.parse(v.desc1);
+                    this.arr.push(v);
+                });
+                this.arr=val.body;
+            });
+            this.$http.get("/api/index/incate/cat?id="+id).then(res =>{
+                this.cate=res.data[0].name;
+            });
+            next()
         },
         methods:{
 //            handleCurrentChange(val) {
@@ -89,12 +108,7 @@
 //                }
 //            },
             addcar(gid){
-                if (!localStorage.users) {
-                    this.$message.error('请先登录')
-                    return
-                }
-                let user = JSON.parse(localStorage.user)
-//                let id=gid;
+                let id=gid;
                 let obj = {
                     gid:id
                 };
@@ -103,6 +117,12 @@
                         "content-type": "application/json"
                     }
                 }).then(res => {
+                    if(res.body=='no'){
+                        this.$message({
+                            message: '请先登录',
+                            type: 'success'
+                        });
+                    };
                     if (res.body=='ok') {
                         this.$message({
                             message: '添加成功',

@@ -246,7 +246,7 @@
                    if(v.cid==2){
                        v.desc1=JSON.parse(v.desc1);
                        this.arr.push(v);
-                   }else if(v.cid==1){
+                   }else if(v.cid==4){
                        v.desc1=JSON.parse(v.desc1);
                        this.brr.push(v);
                    }else if(v.cid==3){
