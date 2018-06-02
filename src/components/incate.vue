@@ -98,6 +98,12 @@
                         "content-type": "application/json"
                     }
                 }).then(res => {
+                    if(res.body=='no'){
+                        this.$message({
+                            message: '请先登录',
+                            type: 'success'
+                        });
+                    };
                     if (res.body=='ok') {
                         this.$message({
                             message: '添加成功',

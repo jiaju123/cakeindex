@@ -77,20 +77,35 @@
             },
             addcar(){
                 let lib=this.$refs.xxx.querySelector('li.active');
-                let obj={};
-                obj.id=this.$route.params.id;
-                obj.text=lib.innerHTML;
-                obj.count=this.count;
-                this.$http.post('/api/index/xiangqing/xinxi',obj,{headers:{"content-type":'application/json'}}).then(res=>{
-                    if (res.body=='ok') {
-                        this.$message({
-                            message: '添加成功',
-                            type: 'success'
-                        });
-                    }else{
-                        this.$message.error('添加失败')
-                    }
-                })
+                if(lib===null){
+                    this.$message({
+                        message: '请选择口味',
+                        type: 'success'
+                    });
+                    return;
+                }else{
+                    let obj={};
+                    obj.id=this.$route.params.id;
+                    obj.text=lib.innerHTML;
+                    obj.count=this.count;
+                    this.$http.post('/api/index/xiangqing/xinxi',obj,{headers:{"content-type":'application/json'}}).then(res=>{
+                        if(res.body==='no'){
+                            this.$message({
+                                message: '请先登录',
+                                type: 'success'
+                            });
+                        }else{
+                            if (res.body==='ok') {
+                                this.$message({
+                                    message: '添加成功',
+                                    type: 'success'
+                                });
+                            }else{
+                                this.$message.error('添加失败')
+                            }
+                        }
+                    })
+                }
             }
         }
 

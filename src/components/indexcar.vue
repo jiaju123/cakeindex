@@ -100,10 +100,14 @@
     },
     created(){
       this.$http.get("/api/index/indexcar").then(res=>{
-        console.log(res);
-        this.drr=res.data;
-        console.log(this.drr);
-//            this.tableData=res.body;
+          if(res.data='no'){
+              this.$message({
+                  message: '请先登录',
+                  type: 'success'
+              });
+          }else{
+              this.drr=res.data;
+          }
       })
     },
 
