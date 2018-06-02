@@ -16,7 +16,7 @@
         <ul class="incar-center">
             <ul class="incar-nav">
                 <li>
-                    <input type="checkbox" class="yuan">
+                    <!--<input type="checkbox" class="yuan">-->
                     <span>全选</span>
                 </li>
                 <li>商品信息</li>
@@ -25,27 +25,26 @@
                 <li>商品小计</li>
                 <li>操作</li>
             </ul>
-            <li v-for="item in arr" :key="item.id" >
-                <input type="radio">
+            <li v-for="(item,index) in arr" :key="item.id" >
+                <input type="checkbox">
                 <router-link to="">
                     <div class="hover">
                         <div class="car-img">
-                            <img :src="item.img" alt="" style="width: 100%">
+                            <img :src="img[index]" alt="" style="width: 100%">
                         </div>
                         <div class="word">
-                            <p>{{item.title}}</p>
-                            <span>三种口味</span>
+                            <p>{{title[index]}}</p>
+                            <span>{{item.taste}}</span>
                         </div>
                         <div class="xuan iconfont icon-xinxi"></div>
                     </div>
                 </router-link>
-                <div class="price">{{item.price}}</div>
+                <div class="price">{{price[index]}}</div>
                 <div class="button">
-                    <button class="jian" @click="name--">-</button>
-                    <span class="i">{{name}}</span>
-                    <button class="jia" @click="name++">+</button>
+                    <el-input-number v-model="item.count" @change="handleChange" :min="1" :max="10" label="描述文字"
+                                     :key="item.id"></el-input-number>
                 </div>
-                <div class="zongji">5999.00</div>
+                <div class="zongji" >{{price[index]*item.count}}</div>
                 <div class="del">
                     <button class="delete">删除</button>
                     <button class="shou">移入收藏夹</button>
@@ -81,7 +80,7 @@
                     <p>商品总价（RMB299.00）-活动优惠（RMB10.00）=商品金额总计（RMB578.00）<span>邮费：免邮费  顺丰次日达</span></p>
                     <div class="RMB">
                         <span class="zhi">支付金额<small>RMB</small></span>
-                        <span class="pr">578.00</span>
+                        <span class="pr">{{total}}</span>
                     </div>
                     <button class="jiesuan">去结算</button>
                 </div>
@@ -96,15 +95,68 @@
             return {
                 arr:[],
                 name:0,
+                data:[],
+                img:[],
+                price:[],
+                title:[],
+
+
             };
         },
         created(){
-            let uid = this.$router.id;
-            this.$http.get("/api/index/incar/car?uid="+uid).then(val =>{
-                this.arr=val.body;
-                console.log(val);
+//            let id=this.$route.params.id;
+            let uid = 1;
+            this.$http.get("/api/index/incar/car?uid=" + uid).then(val => {
+                this.arr = val.body;
+//                console.log(this.arr);
+                this.arr.forEach(val => {
+                    this.$http.get("/api/index/incar/cate?gid=" + val.gid).then(val => {
+                        val.body.forEach((v,i)=>{
+                            v.desc1=JSON.parse(v.desc1)[0].url;
+                        })
+//                        this.data.push(val.body[0])
+                        this.img.push(val.body[0].desc1);
+                        this.title.push(val.body[0].title1);
+                        this.price.push(val.body[0].pricen);
+//                        console.log(this.data);
+                    })
+
+                });
             })
+        },
+        methods:{
+            del(item){
+                let index = this.arr.findIndex(val => val.id === item.id)
+                let id = (this.arr.find((val, ind) => ind == index)).id
+//        console.log(index,id);
+                this.arr.splice(index, 1)
+
+                this.$http.get('/api/index/car/delcar?id=' + id).then(res => {
+                    if (res.body.affectedRows === 1) {
+                        this.$message({
+                            message: '删除成功',
+                            type: 'success'
+                        });
+                    } else {
+                        this.$message.error('删除失败')
+                    }
+                })
+            },
+            handleChange(value) {
+//        console.log(value);
+                this.num1 = value
+            },
+        },
+        computed:{
+            total(){
+                let sum=0
+                this.arr.forEach((val,index)=>{
+                    sum+=this.price[index]*val.count
+                })
+                return sum
+            }
         }
+
     }
 </script>
 <style scoped lang="scss">
@@ -222,35 +274,10 @@
                     line-height: 70px;
                 }
                 .button{
-                    width: 100px;
+                    width: auto;
                     height: 70px;
                     box-sizing: border-box;
-                    padding-top: 28px;
-                    .jian{
-                        background: #fff;
-                        border:none;
-                        outline: none;
-                        font-size: 18px;
-                        color:#000;
-                        float: left;
-                        margin-right: 18px;
-                    }
-                    span{
-                        width: 45px;
-                        font-size: 18px;
-                        color:#000;
-                        text-align: center;
-                        border-bottom: 2px solid #404040;
-                        float: left;
-                    }
-                    .jia{
-                        background: #fff;
-                        border:none;
-                        outline: none;
-                        font-size: 16px;
-                        color:#000;
-                        float: right;
-                    }
+                    padding-top: 15px;
                 }
                 .zongji{
                     width: 50px;

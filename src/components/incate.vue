@@ -89,7 +89,12 @@
 //                }
 //            },
             addcar(gid){
-                let id=gid;
+                if (!localStorage.users) {
+                    this.$message.error('请先登录')
+                    return
+                }
+                let user = JSON.parse(localStorage.user)
+//                let id=gid;
                 let obj = {
                     gid:id
                 };
@@ -98,12 +103,6 @@
                         "content-type": "application/json"
                     }
                 }).then(res => {
-                    if(res.body=='no'){
-                        this.$message({
-                            message: '请先登录',
-                            type: 'success'
-                        });
-                    };
                     if (res.body=='ok') {
                         this.$message({
                             message: '添加成功',
