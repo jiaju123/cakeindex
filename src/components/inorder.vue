@@ -1,5 +1,57 @@
 <template>
     <div id="inorder">
+        <div class="addadd">
+            <div class="ttop">
+                <div class="ttb">
+                    <ul>
+                        <li>
+                            <div>
+                                <p>所在地区</p>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="请输入省市区" v-model="i1">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>详细地址</p>
+                            </div>
+                            <div>
+                                <textarea type="password" placeholder="请输入详细地址" v-model="i2"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>邮政编码</p>
+                            </div>
+                            <div>
+                                <input  type="text" placeholder="请输入邮政编码" v-model="i3">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>收货人姓名</p>
+                            </div>
+                            <div>
+                                <input  type="text" placeholder="请输入收货人姓名" v-model="i4">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>电话号码</p>
+                            </div>
+                            <div>
+                                <input  type="text" placeholder="请输入电话号码" v-model="i5">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ttan">
+                        <div @click="dizhi">保存</div>
+                        <div @click="quxiao">取消</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="incar-top">
             <div class="logo">
                 <img src="../assets/img/zy-logo.jpg" alt="" style="width: 100%">
@@ -17,28 +69,20 @@
             <small>01</small>
             <span>选择收货地址</span>
         </div>
-        <ul class="dizhi">
-            <li>
-                <p class="yi">北京市 朝阳区</p>
-                <span>三里屯SOHO大厦A栋1002室   020004 </span>
-                <p class="er">张冲 <span>134-2345-6549</span></p>
-            </li>
-            <li>
-                <p class="yi">北京市 朝阳区</p>
-                <span>三里屯SOHO大厦A栋1002室   020004 </span>
-                <p class="er">张冲 <span>134-2345-6549</span></p>
-            </li>
-            <li>
-                <p class="yi">北京市 朝阳区</p>
-                <span>三里屯SOHO大厦A栋1002室   020004 </span>
-                <p class="er">张冲 <span>134-2345-6549</span></p>
-            </li>
+        <div class="dizhi">
+            <ul>
+                <li v-for="item in address">
+                    <p class="yi">{{item.city}}</p>
+                    <span>{{item.address}}   {{item.zipcode}}</span>
+                    <p class="er">{{item.name}}<span>{{item.tel}}</span></p>
+                </li>
+            </ul>
             <div class="button-box">
                 <button class="new">使用新地址</button>
-                <button class="new">编辑地址</button>
+                <button class="new" @click="addadd">编辑地址</button>
                 <button class="new">删除地址</button>
             </div>
-        </ul>
+        </div>
         <div class="inorder-one">
             <small>02</small>
             <span>确认商品信息</span>
@@ -144,6 +188,62 @@
         data(){
             return {
                 name:0,
+                i1:"",
+                i2:"",
+                i3:"",
+                i4:"",
+                i5:"",
+                address:[]
+            }
+        },
+        created(){
+            localStorage.id=1;
+            let obj1={};
+            obj1.id=localStorage.id;
+            this.$http.post("/api/index/inabout",obj1,{
+                headers: {
+                    "content-type": 'application/json'
+                }
+            }).then(res=>{
+                this.address=res.body;
+            })
+        },
+        methods:{
+            addadd(){
+                let a=document.documentElement.clientHeight;
+                let tan=document.querySelector('.addadd');
+                tan.style.height=a+'px';
+                tan.style.display='block';
+            },
+            quxiao(){
+                let tan=document.querySelector('.addadd');
+                tan.style.display='none';
+            },
+            dizhi(){
+                let obj={};
+                obj.city=this.i1;
+                obj.address=this.i2;
+                obj.zipcode=this.i3;
+                obj.name=this.i4;
+                obj.tel=this.i5;
+                obj.uid=localStorage.id;
+                this.$http.post("/api/index/inabout/address",obj,{
+                    headers: {
+                        "content-type": 'application/json'
+                    }
+                }).then(res=>{
+                    if (res.body) {
+                        this.address.push(res.body[0])
+                        this.$message({
+                            message: '添加成功',
+                            type: 'success'
+                        });
+                        let tan=document.querySelector('.addadd');
+                        tan.style.display='none';
+                    }else{
+                        this.$message.error('添加失败')
+                    }
+                })
             }
         }
     }
@@ -152,6 +252,106 @@
     #inorder{
         width: 100%;
         height: auto;
+        .addadd{
+            width: 100%;
+            height: auto;
+            background: rgba(0,0,0,0.3);
+            position: fixed;
+            top:0;
+            left:0;
+            z-index: 50;
+            display: none;
+            .ttop{
+                width: 577px;
+                height: 440px;
+                position: fixed;
+                top:0;
+                bottom: 0;
+                right:0;
+                left:0;
+                margin: auto;
+                background: #ffffff;
+                .ttb{
+                    width: 100%;
+                    height: 100%;
+                    padding: 51px 45px 49px 75px;
+                    box-sizing: border-box;
+                    ul{
+                        width: auto;
+                        height:auto;
+                        li{
+                            width:100%;
+                            height: auto;
+                            display: flex;
+                            justify-content: flex-start;
+                            margin-bottom: 15px;
+                            div:first-child{
+                                width: auto;
+                                margin-right: 15px;
+                                p:last-child{
+                                    font-size: 14px;
+                                    letter-spacing: -2px;
+                                }
+                                margin-right: 14px;
+                            }
+                            div:last-child{
+                                input{
+                                    width: 224px;
+                                    height: 34px;
+                                    padding-left: 10px;
+                                }
+                                .che{
+                                    width: 11px;
+                                    height: 11px;
+                                }
+                                span{
+                                    font-size: 10px;
+                                    color: #b4b4b4;
+                                }
+                            }
+
+                        }
+                    }
+                    .ttan{
+                        margin-bottom: 35px;
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+                        div:first-child{
+                            width: 118px;
+                            height: 26px;
+                            background: #ffb2b2;
+                            border-radius: 15px;
+                            text-align: center;
+                            line-height: 26px;
+                            font-size: 12px;
+                            color: #ffffff;
+                            margin-right: 8px;
+                        }
+                        div:last-child{
+                            width: 118px;
+                            height: 26px;
+                            text-align: center;
+                            line-height: 26px;
+                            border-radius: 15px;
+                            border: 1px solid #c8c8c8;
+
+                        }
+                    }
+                    .ttz{
+                        width: auto;
+                        margin: 0 auto;
+                        height: auto;
+                        p{
+                            font-size: 8px;
+                            color: #eeeeee;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
         .incar-top{
             width: 1200px;
             height: 55px;
@@ -201,39 +401,45 @@
             margin: 0 auto 60px;
             padding: 55px 0 0 45px;
             box-sizing: border-box;
-            > li{
-                width: 260px;
+            ul{
+                width: 100%;
                 height: auto;
-                box-sizing: border-box;
-                margin:0 40px 30px 0;
-                border-top: 6px solid #000;
-                padding:25px 0 20px 30px;
-                box-shadow: 3px 3px 25px 5px #EBEBEB;
-                float: left;
-                p.yi{
-                    font-size: 14px;
-                    color:#434343;
-                }
-                span{
-                    font-size: 12px;
-                    line-height: 25px;
-                    margin-bottom: 20px;
-                }
-                p.er{
-                    font-size: 16px;
-                    color:#000;
-                    font-weight: 800;
+                display: flex;
+                flex-wrap: wrap;
+                > li{
+                    width: 260px;
+                    height: 165px;
+                    box-sizing: border-box;
+                    margin:0 40px 30px 0;
+                    border-top: 6px solid #000;
+                    padding:25px 0 20px 30px;
+                    box-shadow: 3px 3px 25px 5px #EBEBEB;
+                    float: left;
+                    p.yi{
+                        font-size: 14px;
+                        color:#434343;
+                    }
                     span{
+                        font-size: 12px;
+                        line-height: 25px;
+                        margin-bottom: 20px;
+                    }
+                    p.er{
                         font-size: 16px;
+                        color:#000;
+                        font-weight: 800;
+                        span{
+                            font-size: 16px;
+                        }
                     }
                 }
-            }
-            > li:hover{
-                border-top: 6px solid #E23338;
+                > li:hover{
+                    border-top: 6px solid #E23338;
+                }
             }
             .button-box{
-                width: 800px;
-                height: auto;
+                height: 45px;
+                text-align: left;
                 button{
                     width: 145px;
                     height: 38px;
