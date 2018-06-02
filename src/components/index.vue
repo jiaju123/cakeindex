@@ -45,7 +45,7 @@
                     </div>
                     <div class="cmid">
                         <div class="cml">
-                            <img src="../assets/img1/shw (9).png" alt="">
+                            <img :src="crr[0].desc1[0].url" alt="">
                         </div>
                         <div class="cmr">
                             <div class="cmrt">
@@ -54,22 +54,22 @@
                                     <p>A good art piece </p>
                                 </div>
                                 <div>
-                                    <p><span>299</span>RMB</p>
+                                    <p><span>{{crr[0].priceo}}</span>RMB</p>
                                 </div>
                             </div>
                             <div class="cmrm">
-                                <h2>卓品蛋糕</h2>
-                                <p style="margin-bottom: 23px;font-size: 15px">爱的蛋糕，融化心“甜”</p>
-                                <p class="p2">本站所有资源仅供学习与参考，请勿用于商业用途，否则产生的一切后果各线路极速下载器通过p2p加速功能，帮助用户对于大文件能更好的加速下载。其他普通下载点限制多线程，仅允许直接点击或另存为下载</p>
-                                <p class="p2">All the resources of this station are for study and reference only. Do not use it for couse, otherwise all the consequences will be produced.The speed downloader of each line through P2P accelerates the function to help users to speed up</p>
-                                <h5>原味蛋糕坯</h5>
+                                <h2>{{crr[0].name}}</h2>
+                                <p style="margin-bottom: 23px;font-size: 15px">{{crr[0].title1}}</p>
+                                <p class="p2">{{crr[0].title2}}</p>
+                                <p class="p2">{{crr[0].title3}}</p>
+                                <h5>{{crr[0].title4}}</h5>
                             </div>
                             <div class="cmrb">
                                 <div class="cb1">
                                     <span style="color: #ffffff">￥</span>
                                 </div>
                                 <div class="cb2">
-                                    <span class="iconfont icon-gouwucheiconling" style="color: #ffffff"></span>
+                                    <span class="iconfont icon-gouwucheiconling" style="color: #ffffff" @click="addcar(0)"></span>
                                 </div>
                             </div>
                         </div>
@@ -84,27 +84,27 @@
                                     <p>A good art piece </p>
                                 </div>
                                 <div>
-                                    <p><span>299</span>RMB</p>
+                                    <p><span>{{crr[1].priceo}}</span>RMB</p>
                                 </div>
                             </div>
                             <div class="cmrm">
-                                <h2>卓品蛋糕</h2>
-                                <p style="margin-bottom: 23px;font-size: 15px">爱的蛋糕，融化心“甜”</p>
-                                <p class="p2">本站所有资源仅供学习与参考，请勿用于商业用途，否则产生的一切后果各线路极速下载器通过p2p加速功能，帮助用户对于大文件能更好的加速下载。其他普通下载点限制多线程，仅允许直接点击或另存为下载</p>
-                                <p class="p2">All the resources of this station are for study and reference only. Do not use it for couse, otherwise all the consequences will be produced.The speed downloader of each line through P2P accelerates the function to help users to speed up</p>
-                                <h5>原味蛋糕坯</h5>
+                                <h2>{{crr[1].name}}</h2>
+                                <p style="margin-bottom: 23px;font-size: 15px">{{crr[1].title1}}</p>
+                                <p class="p2">{{crr[1].title2}}</p>
+                                <p class="p2">{{crr[1].title3}}</p>
+                                <h5>{{crr[1].title4}}</h5>
                             </div>
                             <div class="cmrb">
                                 <div class="cb1">
                                     <span style="color: #ffffff">￥</span>
                                 </div>
                                 <div class="cb2">
-                                    <span class="iconfont icon-gouwucheiconling" style="color: #ffffff"></span>
+                                    <span class="iconfont icon-gouwucheiconling" style="color: #ffffff" @click="addcar(1)"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="cml">
-                            <img src="../assets/img1/shw (14).png" alt="">
+                            <img :src="crr[1].desc1[0].url" alt="">
                         </div>
                     </div>
                 </li>
@@ -141,7 +141,7 @@
                             <div>
                                 <img :src="item.desc1[0].url" alt="">
                             </div>
-                            <h3>{{item.name}}</h3>
+                            <h3 style="color: #000">{{item.name}}</h3>
                             <p class="sp1">{{item.title1}}</p>
                             <p class="sp2">{{item.pricen}}<span>RMB</span></p>
                         </router-link>
@@ -159,7 +159,7 @@
                    <p style="margin-bottom: 33px">
                        through P2P accelerates the function to help users to speed up dow
                    </p>
-                   <div class="more"><a href="">MORE</a></div>
+                   <div class="more"><router-link :to="'/incate'">MORE</router-link></div>
                </div>
             </div>
         </section>
@@ -188,7 +188,7 @@
                             <div>
                                 <img :src="item.desc1[0].url" alt="">
                             </div>
-                            <h3>{{item.name}}</h3>
+                            <h3 style="color: #000">{{item.name}}</h3>
                             <p class="sp1">{{item.title1}}</p>
                             <p class="sp2">{{item.pricen}}<span>RMB</span></p>
                         </router-link>
@@ -226,6 +226,7 @@
             return {
                 arr:[],
                 brr:[],
+                crr:[],
                 swiperOption: {
                     pagination: {
                         el: '.swiper-pagination',
@@ -248,10 +249,40 @@
                    }else if(v.cid==1){
                        v.desc1=JSON.parse(v.desc1);
                        this.brr.push(v);
+                   }else if(v.cid==3){
+                       v.desc1=JSON.parse(v.desc1);
+                       this.crr.push(v);
                    }
                })
-               console.log(this.arr);
+               console.log(this.crr[0]);
            })
+        },
+        methods:{
+          addcar(index){
+              let obj={};
+              obj.id=this.crr[index].id;
+              this.$http.post('/api/index/index/addcar',obj,{
+                  headers: {
+                      "content-type": 'application/json'
+                  }
+              }).then(res=>{
+                  if(res.body==='no'){
+                      this.$message({
+                          message: '请先登录',
+                          type: 'success'
+                      });
+                  }else{
+                      if (res.body==='ok') {
+                          this.$message({
+                              message: '添加成功',
+                              type: 'success'
+                          });
+                      }else{
+                          this.$message.error('添加失败')
+                      }
+                  }
+              })
+          }
         },
         components: {
             swiper,

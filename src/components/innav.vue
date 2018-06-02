@@ -41,7 +41,7 @@
                     </ul>
                     <div class="ttan">
                         <div @click="login">登录</div>
-                        <div>注册</div>
+                        <div @click="rere">注册</div>
                     </div>
                     <div class="ttz">
                         <p>Can not seize the time, the Can not seize the time, the</p>
@@ -298,6 +298,11 @@
                 let tan=document.querySelector('.tan');
                 tan.firstElementChild.style.display='block';
                 tan.lastElementChild.style.display='none';
+            },
+            rere(){
+                let tan=document.querySelector('.tan');
+                tan.firstElementChild.style.display='none';
+                tan.lastElementChild.style.display='block';
             },
             liji(){
                 let obj = Object.assign({},this.form);
